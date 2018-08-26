@@ -1,0 +1,39 @@
+{
+  "name": "timeblox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "npx electron .",
+    "prestart": "npx webpack",
+    "dev": "concurrently \"npx webpack -w\" \"npm start\" "
+  },
+  "keywords": [],
+  "author": "Brookes Stephens <brookes.stephens@priceline.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "date-fns": "^1.29.0",
+    "electron": "2.0.5",
+    "electron-reload": "1.2.5",
+    "electron-settings": "3.2.0",
+    "pcln-design-system": "^1.0.0-70",
+    "prop-types": "^15.6.2",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-icons-kit": "1.1.6",
+    "styled-components": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-core": "6.26.3",
+    "babel-loader": "7.1.5",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-react": "6.24.1",
+    "concurrently": "3.6.0",
+    "devtron": "1.4.0",
+    "webpack": "4.16.1",
+    "webpack-cli": "3.1.0"
+  }
+}
