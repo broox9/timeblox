@@ -17826,7 +17826,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  border-radius: 99999px;\n  display: inline-block;\n  font-size: ', 'px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: ', ';\n  ', ' ', ';\n'], ['\n  border-radius: 99999px;\n  display: inline-block;\n  font-size: ', 'px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: ', ';\n  ', ' ', ';\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  border-radius: 99999px;\n  display: inline-block;\n  font-size: ', 'px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: ', ';\n  ', ' ', ' ', ';\n'], ['\n  border-radius: 99999px;\n  display: inline-block;\n  font-size: ', 'px;\n  font-weight: 600;\n  text-transform: uppercase;\n  letter-spacing: ', ';\n  ', ' ', ' ', ';\n']);
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
@@ -17897,12 +17897,12 @@ var type = function type(props) {
       color: props.theme.colors.text
     }
   };
-  return badgeColors[props.bg];
+  return !(props.bg && props.color) && (badgeColors[props.bg] || badgeColors.lightGray);
 };
 
 var Badge = _styledComponents2.default.div(_templateObject, function (props) {
   return props.theme.fontSizes[0];
-}, (0, _styledSystem.theme)('letterSpacings.caps'), _styledSystem.space, type);
+}, (0, _styledSystem.theme)('letterSpacings.caps'), _styledSystem.space, type, _styledSystem.color);
 
 Badge.displayName = 'Badge';
 
@@ -17917,9 +17917,7 @@ Badge.propTypes = {
 Badge.defaultProps = {
   px: 2,
   py: 1,
-  theme: _theme2.default,
-  color: 'text',
-  bg: 'lightGray'
+  theme: _theme2.default
 };
 
 exports.default = Badge;
@@ -19039,32 +19037,31 @@ var FormField = function (_React$Component) {
       var iconAdjustment = void 0;
 
       _react2.default.Children.forEach(children, function (child, index) {
-        if (!child) {
-          return;
-        }
+        if (!child) return;
 
         var type = child.type,
             props = child.props;
 
-        if (type === _Label2.default) {
-          LabelChild = child;
-        }
-
-        if (type === _Input2.default || type === _Select2.default) {
-          position = index;
-          FieldChild = child;
-          fieldId = props.id;
-          // For aria-label when Label child is not rendered
-          fieldPlaceholder = props.placeholder;
-        }
-
-        if (type === _Icon2.default) {
-          if (position < 0) {
-            BeforeIcon = child;
-            iconAdjustment = props.size - 24;
-          } else {
-            AfterIcon = child;
-          }
+        switch (type) {
+          case _Label2.default:
+            LabelChild = child;
+            break;
+          case _Input2.default:
+          case _Select2.default:
+            position = index;
+            FieldChild = child;
+            fieldId = props.id;
+            // For aria-label when Label child is not rendered
+            fieldPlaceholder = props.placeholder;
+            break;
+          case _Icon2.default:
+            if (position < 0) {
+              BeforeIcon = child;
+              iconAdjustment = props.size - 24;
+            } else {
+              AfterIcon = child;
+            }
+            break;
         }
       });
 
@@ -20898,7 +20895,7 @@ var ToggleBadge = _styledComponents2.default.button(_templateObject, function (p
 }, function (props) {
   return props.theme.bold;
 }, function (props) {
-  return props.selected ? props.theme.colors[props.bg] : props.theme.colors.white;
+  return props.selected ? props.theme.colors[props.bg] : props.unSelectedBg;
 }, function (props) {
   return props.theme.colors[props.color];
 }, _styledSystem.space, _styledSystem.fontSize, function (props) {
@@ -20920,7 +20917,8 @@ ToggleBadge.defaultProps = {
   fontSize: 0,
   theme: _theme2.default,
   color: 'blue',
-  bg: 'lightBlue'
+  bg: 'lightBlue',
+  unSelectedBg: 'transparent'
 };
 
 exports.default = ToggleBadge;
@@ -38585,7 +38583,7 @@ var App = function (_React$Component) {
           _react2.default.createElement(_Toolbar2.default, null),
           _react2.default.createElement(
             _pclnDesignSystem.Container,
-            { p: 2, maxWidth: 800, mx: 'auto', style: { overflowY: 'scroll' } },
+            { p: 2, maxWidth: 800, mx: 'auto', style: { overflowY: 'auto' } },
             _react2.default.createElement(
               _pclnDesignSystem.Flex,
               { justify: 'flex-start', my: 2, align: 'center' },
@@ -38709,7 +38707,7 @@ var AppContext = function (_React$Component) {
       var currentPage = _react2.default.createElement(_LogForm2.default, { event_type: e.target.name, handleSubmit: _this.processLogs });
       _this.setState({ currentPage: currentPage });
     }, _this.openEdit = function (e) {
-      var event_index = e.target.id;
+      var event_index = parseInt(e.currentTarget.id);
       var log = _this.state.logs[event_index];
       console.log('EDIT LOG', typeof event_index === 'undefined' ? 'undefined' : _typeof(event_index), event_index, log);
       var currentPage = _react2.default.createElement(_LogForm2.default, _extends({}, log, { event_index: event_index, handleSubmit: _this.processLogs }));
@@ -39015,8 +39013,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  width: 100%;\n  font-size: 0.75rem;\n  border-collapse: collapse;\n\n  tr {\n    vertical-align: middle;\n    &:nth-child(2n+1) {\n      background-color: ', ';\n    }\n  }\n\n  th {\n    padding: ', 'px;\n    color: ', ';\n    text-align: left;\n  }\n\n  td {\n    padding: ', 'px ', 'px;\n  }\n'], ['\n  width: 100%;\n  font-size: 0.75rem;\n  border-collapse: collapse;\n\n  tr {\n    vertical-align: middle;\n    &:nth-child(2n+1) {\n      background-color: ', ';\n    }\n  }\n\n  th {\n    padding: ', 'px;\n    color: ', ';\n    text-align: left;\n  }\n\n  td {\n    padding: ', 'px ', 'px;\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  cursor: pointer;\n'], ['\n  cursor: pointer;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  width: 100%;\n  font-size: 0.75rem;\n  border-collapse: collapse;\n\n  tr {\n    vertical-align: middle;\n    &:nth-child(2n+1) {\n      background-color: ', ';\n    }\n  }\n\n  th {\n    padding: ', 'px;\n    color: ', ';\n    text-align: left;\n  }\n\n  td {\n    padding: ', 'px ', 'px;\n  }\n'], ['\n  width: 100%;\n  font-size: 0.75rem;\n  border-collapse: collapse;\n\n  tr {\n    vertical-align: middle;\n    &:nth-child(2n+1) {\n      background-color: ', ';\n    }\n  }\n\n  th {\n    padding: ', 'px;\n    color: ', ';\n    text-align: left;\n  }\n\n  td {\n    padding: ', 'px ', 'px;\n  }\n']);
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
@@ -39055,8 +39052,6 @@ var StyledTable = _styledComponents2.default.table(_templateObject, function (pr
 }, function (props) {
   return props.theme.space[2];
 });
-
-var TouchIcon = (0, _styledComponents2.default)(_pclnDesignSystem.Icon)(_templateObject2);
 
 var columnHeaders = ['Date', 'Start Time', 'End Time', 'Type', 'Notes', 'Distraction', 'edit'].map(function (txt, i) {
   return _react2.default.createElement(
@@ -39129,7 +39124,8 @@ var LogList = function (_React$Component) {
           _react2.default.createElement(
             'td',
             null,
-            _react2.default.createElement(TouchIcon, { size: 12, name: 'edit', id: i, onClick: _this.props.editFn })
+            _react2.default.createElement(_pclnDesignSystem.IconButton, { size: 12, title: 'edit', name: 'edit', id: i, onClick: _this.props.editFn }),
+            _react2.default.createElement(_pclnDesignSystem.IconButton, { size: 12, title: 'delete', name: 'radioMinus', id: i, onClick: alertFn })
           )
         );
       }) || _react2.default.createElement(
@@ -39367,7 +39363,7 @@ var ToolBar = function (_React$Component) {
               ),
               _react2.default.createElement(NavIcon, { name: 'list', size: 24, onClick: context.openLogs }),
               _react2.default.createElement(NavIcon, { name: 'tune', size: 20, onClick: context.openSettings }),
-              _react2.default.createElement(NavIcon, { name: 'file', size: 20, onClick: context.openSettings })
+              _react2.default.createElement(NavIcon, { name: 'searchRecent', size: 20, onClick: context.openSettings })
             )
           );
         }
@@ -39518,12 +39514,12 @@ function saveAll(data) {
   file.on('error', function (err) {
     return console.warn(err);
   });
-  file.write(HEADERS + '\n');
+  file.write(HEADERS);
   data.forEach(function (line) {
-    file.write(formatLine);
+    file.write(formatLine(line));
   });
   file.end();
-  console.log(' SAVE ALL', data);
+  console.log('SAVE ALL', data);
 }
 
 function setCurrentFile(overrideFile) {

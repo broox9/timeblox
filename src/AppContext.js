@@ -5,7 +5,7 @@ import LogList from './components/LogList'
 import LogForm from './components/LogForm'
 import Settings from './components/Settings'
 
-const {Provider, Consumer } = React.createContext()
+const { Provider, Consumer } = React.createContext()
 
 export { Consumer }
 
@@ -20,7 +20,7 @@ export default class AppContext extends React.Component {
     const testMode = !this.state.testMode;
     setTestMode(testMode)
     const logs = getData();
-    const currentPage = <LogList logs={logs} editFn={this.openEdit}/>
+    const currentPage = <LogList logs={logs} editFn={this.openEdit} />
 
     this.setState({ testMode, currentPage, logs })
   }
@@ -41,13 +41,13 @@ export default class AppContext extends React.Component {
   }
 
   openEdit = e => {
-    const event_index = e.target.id
+    const event_index = parseInt(e.currentTarget.id)
     const log = this.state.logs[event_index]
     console.log('EDIT LOG', typeof event_index, event_index, log)
     const currentPage = <LogForm {...log} event_index={event_index} handleSubmit={this.processLogs} />
     this.setState({ currentPage })
   }
-  
+
   processLogs = data => {
     const { event_index } = data
     const logs = this.state.logs.slice(0)
@@ -64,9 +64,9 @@ export default class AppContext extends React.Component {
 
   componentDidMount() {
     const logs = getData()
-    this.setState({ logs, currentPage: <LogList logs={logs} editFn={this.openEdit}/> })
+    this.setState({ logs, currentPage: <LogList logs={logs} editFn={this.openEdit} /> })
   }
-  
+
   render() {
     const { openForm, openEdit, toggleTestMode, openLogs, openSettings, processLogs } = this
     const valueObj = {

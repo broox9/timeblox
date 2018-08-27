@@ -27,22 +27,23 @@ const NavIcon = styled(Icon)`
 
 export default class ToolBar extends React.Component {
   render() {
-    
-    return (          
+
+    return (
       <Consumer>
-      { context => {
-        const bg = context.state.testMode ? 'gray' : 'darkGray'
-        return (
-          <ToolBarWrapper width={65} py={2} px={1}>
-            <Flex flexDirection='column' align='center' >
-              <TestMode bg={bg} onClick={context.toggleTestMode}>test</TestMode>
-              <NavIcon name="list" size={24} onClick={context.openLogs}/>
-              <NavIcon name="tune" size={20} onClick={context.openSettings} />
-              <NavIcon name="file" size={20} onClick={context.openSettings} />
-            </Flex>
-          </ToolBarWrapper>
-        )}
-      }
+        {context => {
+          const bg = context.state.testMode ? 'gray' : 'darkGray'
+          return (
+            <ToolBarWrapper width={65} py={2} px={1}>
+              <Flex flexDirection='column' align='center' >
+                <TestMode bg={bg} onClick={context.toggleTestMode}>test</TestMode>
+                <NavIcon name="list" size={24} onClick={context.openLogs} />
+                <NavIcon name="tune" size={20} onClick={context.openSettings} />
+                <NavIcon name="searchRecent" size={20} onClick={context.openSettings} />
+              </Flex>
+            </ToolBarWrapper>
+          )
+        }
+        }
       </Consumer>
     )
   }

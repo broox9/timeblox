@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Icon } from 'pcln-design-system'
+import { Container, Icon, IconButton } from 'pcln-design-system'
 import styled from 'styled-components'
 
 import { today, months } from '../time-functions'
@@ -28,10 +28,6 @@ const StyledTable = styled.table`
   }
 `
 
-const TouchIcon = styled(Icon)`
-  cursor: pointer;
-`
-
 const columnHeaders = [
   'Date', 'Start Time', 'End Time', 'Type', 'Notes', 'Distraction', 'edit'
 ].map((txt, i) => <th key={i}>{txt}</th>)
@@ -43,7 +39,7 @@ export default class LogList extends React.Component {
     logs: PropTypes.array,
     editFn: PropTypes.func.isRequired
   }
-  
+
   makeRows = () => {
     return this.props.logs.length && this.props.logs.map((log, i) => {
       const { event_date, event_time_start, event_time_end, event_type, event_details, event_distraction } = log
@@ -55,8 +51,8 @@ export default class LogList extends React.Component {
         <td>{event_details}</td>
         <td>{event_distraction}</td>
         <td>
-          <TouchIcon size={12} name="edit" id={i} onClick={this.props.editFn}/>
-          {/* <TouchIcon size={12} name="radioMinus" id={i} onClick={alertFn}/> */}
+          <IconButton size={12} title="edit" name="edit" id={i} onClick={this.props.editFn} />
+          <IconButton size={12} title="delete" name="radioMinus" id={i} onClick={alertFn} />
         </td>
       </tr>
     }) || <tr><td colSpan={columnHeaders.length}>No Log Entries</td></tr>
@@ -70,9 +66,9 @@ export default class LogList extends React.Component {
             <tr>
               {columnHeaders}
             </tr>
-            { this.makeRows() } 
+            {this.makeRows()}
           </tbody>
-        </StyledTable>  
+        </StyledTable>
       </Container>
     )
   }

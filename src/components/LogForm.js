@@ -1,6 +1,6 @@
 import React from 'React'
 import PropTypes from 'prop-types'
-import { Box, Button, GreenButton, Input, Label, InputField, InputGroup, Icon, Select } from 'pcln-design-system'
+import { GreenButton, Input, Label, InputField, InputGroup, Icon, Select } from 'pcln-design-system'
 
 import { timeTypes, today } from '../time-functions'
 
@@ -40,7 +40,7 @@ export default class LogForm extends React.Component {
 
   onInput = e => this.setState({ [e.target.id]: e.target.value })
 
-  setTimeTypeOptions = () => timeTypes.map( t => <option value={t}>{t}</option>)
+  setTimeTypeOptions = () => timeTypes.map(t => <option value={t}>{t}</option>)
 
   handleFormSubmit = e => {
     e.preventDefault()
@@ -56,7 +56,7 @@ export default class LogForm extends React.Component {
             <Icon name="event" />
             <Select id="event_type" value={this.state.event_type} onChange={this.onInput}>
               <option>select a type</option>
-              { this.setTimeTypeOptions() }
+              {this.setTimeTypeOptions()}
             </Select>
           </InputField>
 
@@ -75,13 +75,13 @@ export default class LogForm extends React.Component {
           <InputField>
             <Label htmlFor="event_details">Details</Label>
             <Icon name="coupon" />
-            <Input type="text" id="event_details"  value={this.state.event_details} onInput={this.onInput} placeholder="meeting name, details, etc"/>
+            <Input type="text" id="event_details" value={this.state.event_details} onInput={this.onInput} placeholder="meeting name, details, etc" />
           </InputField>
 
           <InputField>
             <Label htmlFor="event_date">Date</Label>
             <Icon name="calendar" />
-            <Input type="date" id="event_date" onInput={this.onInput} value={this.state.event_date}/>
+            <Input type="date" id="event_date" onInput={this.onInput} value={this.state.event_date} />
           </InputField>
         </InputGroup>
 

@@ -14,7 +14,7 @@ const FlexWrap = styled(Flex)`
 `
 
 export default class App extends React.Component {
-  
+
   createLog = data => {
     console.log('SAVING', data)
     // const logs = saveLog(data)
@@ -24,11 +24,11 @@ export default class App extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <AppContext>
         <FlexWrap flexDirection='row' justify="flex-start" align="stretch">
           <Toolbar />
-          <Container p={2} maxWidth={800} mx="auto" style={{overflowY: 'scroll'}}>
+          <Container p={2} maxWidth={800} mx="auto" style={{ overflowY: 'auto' }}>
             <Flex justify="flex-start" my={2} align="center">
               <Icon name="timer" size={30} color="orange" />
               <Heading.h4 ml={2}>TimeBlox</Heading.h4>
@@ -37,7 +37,7 @@ export default class App extends React.Component {
               <TypeButtons />
             </Box>
             <Consumer>
-              { context => context.state.currentPage }
+              {context => context.state.currentPage}
             </Consumer>
           </Container>
         </FlexWrap>

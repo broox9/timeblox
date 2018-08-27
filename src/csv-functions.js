@@ -36,12 +36,12 @@ export function saveLog(data) {
 export function saveAll(data) {
   const file = fs.createWriteStream(_currentFile)
   file.on('error', err => console.warn(err))
-  file.write(`${HEADERS}\n`)
+  file.write(HEADERS)
   data.forEach(line => {
-    file.write(formatLine)
+    file.write(formatLine(line))
   });
   file.end()
-  console.log(' SAVE ALL', data)
+  console.log('SAVE ALL', data)
 }
 
 export function setCurrentFile(overrideFile) {
@@ -55,5 +55,5 @@ export function setCurrentFile(overrideFile) {
 
 function formatLine(line) {
   const { event_date, event_time_start, event_time_end, event_type, event_details, event_distraction } = line
-  return `\n${event_date}\t${event_time_start}\t${event_time_end}\t${event_type}\t${event_details}\t${event_distraction }`
+  return `\n${event_date}\t${event_time_start}\t${event_time_end}\t${event_type}\t${event_details}\t${event_distraction}`
 }
