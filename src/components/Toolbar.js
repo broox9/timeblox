@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex, Badge, Icon } from 'pcln-design-system'
+import { Box, Flex, Badge } from 'pcln-design-system'
+import Icon from 'feather-icons-react'
 
 import { Consumer } from '../AppContext'
 
@@ -36,9 +37,9 @@ export default class ToolBar extends React.Component {
             <ToolBarWrapper width={65} py={2} px={1}>
               <Flex flexDirection='column' align='center' >
                 <TestMode bg={bg} onClick={context.toggleTestMode}>test</TestMode>
-                <NavIcon name="list" size={24} onClick={context.openLogs} />
-                <NavIcon name="tune" size={20} onClick={context.openSettings} />
-                <NavIcon name="searchRecent" size={20} onClick={context.openSettings} />
+                <NavIcon icon="list" size={24} onClick={context.openLogs} />
+                <NavIcon icon="settings" size={20} onClick={context.openSettings} />
+                {/* <NavFeather.FileText size={20} onClick={context.openSettings} /> */}
               </Flex>
             </ToolBarWrapper>
           )

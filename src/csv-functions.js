@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { StringDecoder } from 'string_decoder'
+import settings from 'electron-settings'
 
 import { months } from './time-functions'
 
@@ -10,7 +11,7 @@ const month = months[date.getMonth()]
 const year = date.getFullYear()
 let _defaultFile = `TimeBlox - ${month} ${year}.tsv`
 let _currentFile = `TimeBlox - ${month} ${year}.tsv`
-let _filePath = `${process.env['HOME']}/Desktop/timeblox/`
+let _filePath = `${settings.get('defaultFolder')[0]}/` || `${process.env['HOME']}/Desktop/timeblox/`
 
 setCurrentFile()
 

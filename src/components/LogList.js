@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Icon, IconButton } from 'pcln-design-system'
+import { Box, Flex, Heading } from 'pcln-design-system'
+import TypeButtons from './TypeButtons'
+import Icon from 'feather-icons-react'
 import styled from 'styled-components'
 
 import { today, months } from '../time-functions'
+import PageTitle from '../atoms/PageTitle'
 
 const StyledTable = styled.table`
   width: 100%;
@@ -24,7 +27,7 @@ const StyledTable = styled.table`
   }
 
   td {
-    padding: ${props => props.theme.space[1]}px ${props => props.theme.space[2]}px;
+    padding: ${props => props.theme.space[2]}px ${props => props.theme.space[2]}px;
   }
 `
 
@@ -51,17 +54,21 @@ export default class LogList extends React.Component {
         <td>{event_details}</td>
         <td>{event_distraction}</td>
         <td>
-          <IconButton size={12} title="edit" name="edit" id={i} onClick={this.props.editFn} />
-          <IconButton size={12} title="delete" name="radioMinus" id={i} onClick={alertFn} />
+          <Icon size={12} title="edit" icon="edit" id={i} onClick={this.props.editFn} />
+          <Icon size={12} title="delete" icon="trash-2" id={i} onClick={alertFn} />
         </td>
       </tr>
     }) || <tr><td colSpan={columnHeaders.length}>No Log Entries</td></tr>
   }
   render() {
     return (
-      <Container>
+      <Box width={1}>
+        <PageTitle>Time Logs</PageTitle>
+        <Flex justify="center" my={2}>
+          <TypeButtons />
+        </Flex>
         <StyledTable>
-          <caption>Time Logs</caption>
+          {/* <caption>Time Logs</caption> */}
           <tbody>
             <tr>
               {columnHeaders}
@@ -69,7 +76,7 @@ export default class LogList extends React.Component {
             {this.makeRows()}
           </tbody>
         </StyledTable>
-      </Container>
+      </Box>
     )
   }
 }
