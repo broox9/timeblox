@@ -39805,7 +39805,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  flex-grow: 1;\n  padding: 0;\n  height: 100vh;\n'], ['\n  flex-grow: 1;\n  padding: 0;\n  height: 100vh;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  flex-grow: 1;\n  padding: 0;\n  height: 100vh;\n\n  * {\n    box-sizing: border-box;\n  }\n'], ['\n  flex-grow: 1;\n  padding: 0;\n  height: 100vh;\n\n  * {\n    box-sizing: border-box;\n  }\n']);
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
@@ -39824,6 +39824,10 @@ var _AppContext2 = _interopRequireDefault(_AppContext);
 var _Toolbar = __webpack_require__(/*! ./components/Toolbar */ "./src/components/Toolbar.js");
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
+
+var _DragRegion = __webpack_require__(/*! ./atoms/DragRegion */ "./src/atoms/DragRegion.js");
+
+var _DragRegion2 = _interopRequireDefault(_DragRegion);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39854,19 +39858,23 @@ var App = function (_React$Component) {
         null,
         _react2.default.createElement(
           FlexWrap,
-          { flexDirection: 'row', justify: 'flex-start', align: 'stretch', p: 2 },
+          { flexDirection: 'row', justify: 'flex-start', align: 'stretch' },
           _react2.default.createElement(_Toolbar2.default, null),
           _react2.default.createElement(
             _pclnDesignSystem.Container,
-            { p: 2, width: '90%', mx: 'auto', style: { overflowY: 'auto' } },
+            { p: 3, width: '95%', mx: 'auto', style: { overflowY: 'auto' } },
             _react2.default.createElement(
-              _pclnDesignSystem.Flex,
-              { justify: 'center', my: 2, align: 'center' },
-              _react2.default.createElement(_pclnDesignSystem.Icon, { name: 'timer', size: 30, color: 'orange' }),
+              _DragRegion2.default,
+              null,
               _react2.default.createElement(
-                _pclnDesignSystem.Heading.h2,
-                { ml: 2 },
-                'TimeBlox'
+                _pclnDesignSystem.Flex,
+                { justify: 'center', my: 2, align: 'center' },
+                _react2.default.createElement(_pclnDesignSystem.Icon, { name: 'timer', size: 30, color: 'orange' }),
+                _react2.default.createElement(
+                  _pclnDesignSystem.Heading.h2,
+                  { ml: 2 },
+                  'TimeBlox'
+                )
               )
             ),
             _react2.default.createElement(
@@ -40037,6 +40045,42 @@ var AppContext = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = AppContext;
+
+/***/ }),
+
+/***/ "./src/atoms/DragRegion.js":
+/*!*********************************!*\
+  !*** ./src/atoms/DragRegion.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  cursor: grab;\n  -webkit-app-region: drag;\n\n  &:active {\n    cursor: grabbing;\n  }\n'], ['\n  cursor: grab;\n  -webkit-app-region: drag;\n\n  &:active {\n    cursor: grabbing;\n  }\n']);
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _pclnDesignSystem = __webpack_require__(/*! pcln-design-system */ "./node_modules/pcln-design-system/dist/index.js");
+
+var _styledComponents = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.es.js");
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var DragRegion = (0, _styledComponents2.default)(_pclnDesignSystem.Box)(_templateObject);
+
+exports.default = DragRegion;
 
 /***/ }),
 
@@ -40669,8 +40713,8 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  background-color: ', ';\n  flex-grow: 0;\n'], ['\n  background-color: ', ';\n  flex-grow: 0;\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  cursor: pointer;\n  margin-bottom: 16px;\n  align-self: \'flex-end\';\n\n  &:hover {\n    background-color: ', '\n  }\n'], ['\n  cursor: pointer;\n  margin-bottom: 16px;\n  align-self: \'flex-end\';\n\n  &:hover {\n    background-color: ', '\n  }\n']),
+var _templateObject = _taggedTemplateLiteral(['\n  background-color: ', ';\n  flex-grow: 0;\n  min-width: 72px;\n  height: 100%;\n'], ['\n  background-color: ', ';\n  flex-grow: 0;\n  min-width: 72px;\n  height: 100%;\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  cursor: pointer;\n  margin-top: 16px;\n  justify-self: flex-end;\n\n  &:hover {\n    background-color: ', '\n  }\n'], ['\n  cursor: pointer;\n  margin-top: 16px;\n  justify-self: flex-end;\n\n  &:hover {\n    background-color: ', '\n  }\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  color: ', ';\n  cursor: pointer;\n  margin-bottom: 16px;\n'], ['\n  color: ', ';\n  cursor: pointer;\n  margin-bottom: 16px;\n']);
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -40689,6 +40733,10 @@ var _featherIconsReact2 = _interopRequireDefault(_featherIconsReact);
 
 var _AppContext = __webpack_require__(/*! ../AppContext */ "./src/AppContext.js");
 
+var _DragRegion = __webpack_require__(/*! ../atoms/DragRegion */ "./src/atoms/DragRegion.js");
+
+var _DragRegion2 = _interopRequireDefault(_DragRegion);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -40699,7 +40747,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var ToolBarWrapper = (0, _styledComponents2.default)(_pclnDesignSystem.Box)(_templateObject, function (props) {
+var ToolBarWrapper = (0, _styledComponents2.default)(_pclnDesignSystem.Flex)(_templateObject, function (props) {
   return props.theme.colors.darkGray;
 });
 
@@ -40730,18 +40778,18 @@ var ToolBar = function (_React$Component) {
         function (context) {
           var bg = context.state.testMode ? 'gray' : 'darkGray';
           return _react2.default.createElement(
-            ToolBarWrapper,
-            { width: 65, py: 2, px: 1 },
+            _DragRegion2.default,
+            null,
             _react2.default.createElement(
-              _pclnDesignSystem.Flex,
-              { flexDirection: 'column', align: 'center' },
+              ToolBarWrapper,
+              { pt: '40px', px: 2, justify: 'flex-start', flexDirection: 'column', align: 'center' },
+              _react2.default.createElement(NavIcon, { icon: 'list', size: 24, onClick: context.openLogs }),
+              _react2.default.createElement(NavIcon, { icon: 'settings', size: 20, onClick: context.openSettings }),
               _react2.default.createElement(
                 TestMode,
                 { bg: bg, onClick: context.toggleTestMode },
                 'test'
-              ),
-              _react2.default.createElement(NavIcon, { icon: 'list', size: 24, onClick: context.openLogs }),
-              _react2.default.createElement(NavIcon, { icon: 'settings', size: 20, onClick: context.openSettings })
+              )
             )
           );
         }
