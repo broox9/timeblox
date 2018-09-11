@@ -10,6 +10,10 @@ const FlexWrap = styled(Flex)`
   flex-grow: 1;
   padding: 0;
   height: 100vh;
+
+  * {
+    box-sizing: border-box;
+  }
 `
 
 export default class App extends React.Component {
@@ -19,7 +23,7 @@ export default class App extends React.Component {
       <AppContext>
         <FlexWrap flexDirection='row' justify="flex-start" align="stretch">
           <Toolbar />
-          <Container p={2} width="90%" mx="auto" style={{ overflowY: 'auto' }}>
+          <Container p={3} width="95%" mx="auto" style={{ overflowY: 'auto' }}>
             <Flex justify="center" my={2} align="center">
               <Icon name="timer" size={30} color="orange" />
               <Heading.h2 ml={2}>TimeBlox</Heading.h2>

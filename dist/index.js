@@ -39854,7 +39854,7 @@ var App = function (_React$Component) {
         null,
         _react2.default.createElement(
           FlexWrap,
-          { flexDirection: 'row', justify: 'flex-start', align: 'stretch' },
+          { flexDirection: 'row', justify: 'flex-start', align: 'stretch', p: 2 },
           _react2.default.createElement(_Toolbar2.default, null),
           _react2.default.createElement(
             _pclnDesignSystem.Container,
@@ -40130,7 +40130,7 @@ var LogForm = function (_React$Component) {
       event_type: _this.props.event_type,
       event_distraction: _this.props.event_distraction,
       event_details: _this.props.event_details,
-      event_date: _this.props.event_date,
+      event_date: _this.props.event_date || (0, _timeFunctions.today)(),
       event_time_start: _this.props.event_time_start,
       event_time_end: _this.props.event_time_end
     }, _this.onInput = function (e) {
@@ -40292,7 +40292,7 @@ LogForm.defaultProps = {
   index: null,
   event_distraction: '0',
   event_details: '',
-  event_date: (0, _timeFunctions.today)(),
+  // event_date: today(),
   event_time_start: '',
   eventTimeEnd: ''
 };

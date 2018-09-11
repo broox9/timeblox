@@ -5,8 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "npx electron .",
-    "prestart": "npx webpack",
-    "dev": "concurrently \"npx webpack -w\" \"npm start\" "
+    "dev": "NODE_ENV=development concurrently \"npx webpack -w\" \"npm start\" ",
+    "staging": "NODE_ENV=production npm start"
   },
   "keywords": [],
   "author": "Brookes Stephens <brookes.stephens@priceline.com>",

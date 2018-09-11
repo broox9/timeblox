@@ -23,7 +23,7 @@ export default class LogForm extends React.Component {
     index: null,
     event_distraction: '0',
     event_details: '',
-    event_date: today(),
+    // event_date: today(),
     event_time_start: '',
     eventTimeEnd: '',
   }
@@ -33,7 +33,7 @@ export default class LogForm extends React.Component {
     event_type: this.props.event_type,
     event_distraction: this.props.event_distraction,
     event_details: this.props.event_details,
-    event_date: this.props.event_date,
+    event_date: this.props.event_date || today(),
     event_time_start: this.props.event_time_start,
     event_time_end: this.props.event_time_end,
   }

@@ -12,7 +12,9 @@ function createWindow () {
   win.loadFile('index.html')
   // win.loadFile(`file://${__dirname}/index.html`) // cuz electron-reload
 
-  win.webContents.openDevTools()
+  if (process.env.NODE_ENV === 'development') {
+    win.webContents.openDevTools()
+  }
 
   win.on('closed', () => {
     // Dereference the window object, usually you would store windows
