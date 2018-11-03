@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Button } from 'pcln-design-system'
 
 import { Consumer } from '../AppContext'
-import { timeTypes } from '../time-functions'
+import { timeTypes } from '../helpers/time-functions'
 
 const StyledButton = styled(Button)`
  margin-right: ${props => props.theme.space[2]}px;

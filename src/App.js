@@ -18,13 +18,12 @@ const FlexWrap = styled(Flex)`
 `
 
 export default class App extends React.Component {
-
   render() {
     return (
       <AppContext>
         <FlexWrap flexDirection='row' justify="flex-start" align="stretch">
           <Toolbar />
-          <Container p={3} width="95%" mx="auto" style={{ overflowY: 'auto' }}>
+          <Container p={3} width={1} mx={2} style={{ overflowY: 'auto' }}>
             <DragRegion>
               <Flex justify="center" my={2} align="center">
                 <Icon name="timer" size={30} color="orange" />

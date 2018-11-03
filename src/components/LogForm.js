@@ -2,7 +2,7 @@ import React from 'React'
 import PropTypes from 'prop-types'
 import { GreenButton, Input, Label, InputField, InputGroup, Icon, Select } from 'pcln-design-system'
 
-import { timeTypes, today } from '../time-functions'
+import { timeTypes, today } from '../helpers/time-functions'
 
 export default class LogForm extends React.Component {
 

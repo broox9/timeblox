@@ -41,6 +41,7 @@ export default class ToolBar extends React.Component {
               <ToolBarWrapper pt="40px" px={2} justify="flex-start" flexDirection='column' align='center'>
                 <NavIcon icon="list" size={24} onClick={context.openLogs} />
                 <NavIcon icon="settings" size={20} onClick={context.openSettings} />
+                <NavIcon icon="pie-chart" size={20} onClick={context.openVisualizations} />
                 <TestMode bg={bg} onClick={context.toggleTestMode}>test</TestMode>
               </ToolBarWrapper>
             </DragRegion>

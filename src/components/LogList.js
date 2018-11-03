@@ -5,7 +5,7 @@ import TypeButtons from './TypeButtons'
 import Icon from 'feather-icons-react'
 import styled from 'styled-components'
 
-import { today, months } from '../time-functions'
+import { today, months } from '../helpers/time-functions'
 import PageTitle from '../atoms/PageTitle'
 
 const StyledTable = styled.table`
@@ -46,7 +46,7 @@ export default class LogList extends React.Component {
   makeRows = () => {
     return this.props.logs.length && this.props.logs.map((log, i) => {
       const { event_date, event_time_start, event_time_end, event_type, event_details, event_distraction } = log
-      return <tr key={i} data-id={i}>
+      return <tr key={i} data-id={i} cellpadding={4}>
         <td>{event_date}</td>
         <td>{event_time_start}</td>
         <td>{event_time_end}</td>
