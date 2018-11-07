@@ -4,6 +4,7 @@ import { Box, Flex, Heading } from 'pcln-design-system'
 import TypeButtons from './TypeButtons'
 import Icon from 'feather-icons-react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { today, months } from '../helpers/time-functions'
 import PageTitle from '../atoms/PageTitle'
@@ -45,8 +46,9 @@ export default class LogList extends React.Component {
 
   makeRows = () => {
     return this.props.logs.length && this.props.logs.map((log, i) => {
+      const editLink = '/edit/' + i
       const { event_date, event_time_start, event_time_end, event_type, event_details, event_distraction } = log
-      return <tr key={i} data-id={i} cellpadding={4}>
+      return <tr key={i} data-id={i} cellPadding={4}>
         <td>{event_date}</td>
         <td>{event_time_start}</td>
         <td>{event_time_end}</td>
@@ -54,7 +56,7 @@ export default class LogList extends React.Component {
         <td>{event_details}</td>
         <td>{event_distraction}</td>
         <td>
-          <Icon size={12} title="edit" icon="edit" id={i} onClick={this.props.editFn} />
+          <Link to={editLink}><Icon size={12} title="edit" icon="edit" id={i} /></Link>
           <Icon size={12} title="delete" icon="trash-2" id={i} onClick={alertFn} />
         </td>
       </tr>

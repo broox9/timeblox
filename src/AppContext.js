@@ -32,40 +32,38 @@ export default class AppContext extends React.Component {
     const testMode = !this.state.testMode;
     setTestMode(testMode)
     const logs = getData();
-    const currentPage = <LogList logs={logs} editFn={this.openEdit} />
+    return <LogList logs={logs} editFn={this.openEdit} />
 
-    this.setState({ testMode, currentPage, logs })
+    // this.setState({ testMode, currentPage, logs })
   }
 
-  openSettings = e => {
-    const currentPage = <Settings />
-    this.setState({ currentPage })
+  openSettings = props => {
+    return <Settings />
   }
 
-  openLogs = e => {
-    const currentPage = <LogList logs={this.state.logs} editFn={this.openEdit} />
-    this.setState({ currentPage })
+  openLogs = props => {
+    console.log('logs', this.state.logs)
+    return <LogList logs={this.state.logs} editFn={this.openEdit} />
   }
 
   openForm = e => {
-    const currentPage = <LogForm event_type={e.target.name} handleSubmit={this.processLogs} />
-    this.setState({ currentPage })
+    return <LogForm event_type={e.target.name} handleSubmit={this.processLogs} />
   }
 
-  openEdit = e => {
-    const event_index = parseInt(e.currentTarget.id)
+  openEdit = props => {
+    console.log('edit props', props)
+    const event_index = parseInt(props.match.params.id)
     const log = this.state.logs[event_index]
     console.log('EDIT LOG', typeof event_index, event_index, log)
-    const currentPage = <LogForm {...log} event_index={event_index} handleSubmit={this.processLogs} />
-    this.setState({ currentPage })
+    return <LogForm {...log} event_index={event_index} handleSubmit={this.processLogs} />
   }
 
-  openVisualizations = e => {
+  openVisualizations = props => {
     const pieData = pieChartByType(this.state.logs)
     const pieDataToday = pieChartByTypeToday(this.state.logs)
     const pieDataWeek = pieChartByTypeThisWeek(this.state.logs)
     const barDataMonth = pieChartByType(this.state.logs)
-    const currentPage = (
+    return (
       <Visualizations
         pieData={pieData}
         pieDataToday={pieDataToday}
@@ -92,7 +90,7 @@ export default class AppContext extends React.Component {
 
   componentDidMount() {
     const logs = getData()
-    this.setState({ logs, currentPage: <LogList logs={logs} editFn={this.openEdit} /> })
+    this.setState({ logs })
     // prepData(logs)
     console.log(' by type ', pieChartByType(logs))
   }

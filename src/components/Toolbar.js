@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Box, Flex, Badge } from 'pcln-design-system'
 import Icon from 'feather-icons-react'
+import { Link } from 'react-router-dom'
 
 import { Consumer } from '../AppContext'
 import DragRegion from '../atoms/DragRegion'
@@ -39,9 +40,9 @@ export default class ToolBar extends React.Component {
           return (
             <DragRegion>
               <ToolBarWrapper pt="40px" px={2} justify="flex-start" flexDirection='column' align='center'>
-                <NavIcon icon="list" size={24} onClick={context.openLogs} />
-                <NavIcon icon="settings" size={20} onClick={context.openSettings} />
-                <NavIcon icon="pie-chart" size={20} onClick={context.openVisualizations} />
+                <Link to="/"><NavIcon icon="list" size={24} onClick={context.openLogs} /></Link>
+                <Link to="/settings"><NavIcon icon="settings" size={20} /></Link>
+                <Link to="/charts"><NavIcon icon="pie-chart" size={20} /></Link>
                 <TestMode bg={bg} onClick={context.toggleTestMode}>test</TestMode>
               </ToolBarWrapper>
             </DragRegion>

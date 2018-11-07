@@ -20,9 +20,21 @@ export default class Settings extends React.Component {
     }, this.setFilePath)
   }
 
+  chooseFile = e => {
+    e.preventDefault()
+    remote.dialog.showOpenDialog({
+      defaultPath: `${process.env.HOME}/Desktop`,
+      buttonLabel: 'Select A Folder',
+      properties: ['openFile', 'createFile'],
+      message: 'Set The folder to save Your files'
+    }, this.setFile)
+  }
+
   state = {
     defaultFolder: settings.get('defaultFolder')
   }
+
+  setFile = file => console.log(file)
 
   setFilePath = fp => {
     settings.set('defaultFolder', fp)
@@ -54,6 +66,9 @@ export default class Settings extends React.Component {
             <Button size="small" onClick={this.openDialog}>change</Button>
           </InputGroup>
         </form>
+
+
+        <Button onClick={this.chooseFile}>Change Data</Button>
       </Box>
     )
   }

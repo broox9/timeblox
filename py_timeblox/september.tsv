@@ -1,0 +1,142 @@
+Date	Time Start	Time End	Activity	Notes	distraction level
+2018-09-04	10:00	10:15	meeting	stand up	0
+2018-09-04	10:15	17:30	sprint work	filter parody, SVG CC image bug	1
+2018-09-05	09:30	11:30	sprint work	PR's, CC SVG image bug	0
+2018-09-05	11:30	12:00	meeting	CEO update	0
+2018-09-05	12:15	13:20	break	lunch w/ Anshul	0
+2018-09-05	13:20	14:00	sprint work	PR's, react research	0
+2018-09-05	14:00	15:00	meeting	grooming	0
+2018-09-05	15:00	17:00	sprint work	react optimization	1
+2018-09-05	17:00	17:20	meeting	react sync up chat	0
+2018-09-05	17:20	18:00	sprint work	react optimization	0
+2018-09-07	10:00	10:15	meeting	stand up	0
+2018-09-07	10:15	11:00	sprint work	QA seat maps	1
+2018-09-07	11:00	11:30	meeting	Testing strategy for node	0
+2018-09-07	11:30	12:00	sprint work	QA seat maps story	0
+2018-09-07	12:00	13:00	meeting	Hiring workshop	0
+2018-09-07	13:00	13:40	break	lunch	0
+2018-09-05	13:40	14:00	sprint work	PR's and QA	0
+2018-09-07	14:00	15:00	meeting	Design System Meeting	0
+2018-09-07	15:00	17:30	sprint work	Sort airlines by price, PR's	0
+2018-09-10	09:40	10:00	sprint work	Filters sort airlines by price	0
+2018-09-10	10:00	10:15	meeting	stand up	0
+2018-09-10	10:15	11:00	sprint work	Angular Redux research	0
+2018-09-10	11:00	12:10	meeting	Angular Redux Strategy	0
+2018-09-10	12:10	13:00	break	lunch	0
+2018-09-10	13:00	14:00	meeting	backlog grooming	0
+2018-09-10	14:00	16:00	sprint work	verifying releases, QA, Angular/React experiment	1
+2018-09-10	16:00	17:00	meeting	Angular to React Strategy meeting	0
+2018-09-10	17:00	18:00	sprint work	Set up server side tests in Checkout	0
+2018-09-11	09:30	10:05	meeting	Hiring Ring	0
+2018-09-11	10:05	10:15	meeting	stand up	0
+2018-09-11	10:05	12:40	sprint work	QA, Fixing Seats before checkout PR, Merchandising issue	1
+2018-09-11	12:40	13:20	break	lunch	0
+2018-09-11	13:20	15:00	sprint work	Seat Maps before Checkout	1
+2018-09-11	15:00	15:30	meeting	Demo	0
+2018-09-11	16:00	16:30	other	fixes to logging app	0
+2018-09-11	16:30	16:55	sprint work	Seatmaps before checkout	0
+2018-09-12	09:30	12:40	sprint work	Seat Maps Before Checkout	2
+2018-09-12	12:40	13:25	break	lunch	0
+2018-09-12	13:25	15:00	sprint work	Seat Maps, Agoda APIs	1
+2018-09-12	15:00	17:00	meeting	sprint planning	0
+2018-09-13	17:00	17:20	sprint work	Seat Maps before checkout	0
+2018-09-13	10:00	10:10	meeting	stand up	0
+2018-09-13	10:00	10:20	other	commuting	0
+2018-09-13	10:20	11:00	sprint work	Seat Maps before Checkout	0
+2018-09-13	11:00	11:30	meeting	Tech Talk (Ramda.js)	0
+2018-09-13	11:30	13:00	sprint work	Seat Maps	0
+2018-09-13	13:00	13:40	other	lunch, TSC	0
+2018-09-13	13:40	15:00	sprint work	Seat maps	1
+2018-09-13	15:00	15:45	meeting	Flights UX Sync up	0
+2018-09-13	15:45	16:00	sprint work	PRs, Release verifying	0
+2018-09-13	16:00	18:30	sprint work	Seats Before Checkout	0
+2018-09-14	09:40	10:00	sprint work	seats before checkout	0
+2018-09-14	10:00	10:05	meeting	stand up	0
+2018-09-14	10:05	13:00	sprint work	Seat maps before checkout	0
+2018-09-14	13:00	14:10	break	lunch	0
+2018-09-14	14:10	14:30	sprint work	Seats maps before checkout	0
+2018-09-14	14:30	15:00	meeting	design system	0
+2018-09-14	15:00	16:00	meeting	QA Technical Review/Ideas	0
+2018-09-14	16:00	18:15	sprint work	seat maps before checkout	0
+2018-09-17	09:30	10:00	sprint work	seat maps before checkout	0
+2018-09-17	10:00	10:10	meeting	stand up	0
+2018-09-17	10:10	12:00	sprint work	Baggage Fee Modal SETI	0
+2018-09-17	12:00	12:30	meeting	currency conversion updates	0
+2018-09-17	12:30	13:15	break	lunch	0
+2018-09-17	13:15	14:15	sprint work	baggage fee modal SETI	0
+2018-09-17	14:15	14:30	meeting	TSC (gopher)	0
+2018-09-17	14:30	16:00	sprint work	baggage fee modal	0
+2018-09-17	16:00	16:05	other	showing adarsh time logging tool	0
+2018-09-17	16:05	18:45	sprint work	baggage fee modal	0
+2018-09-18	09:15	09:30	sprint work	baggage fee modal	0
+2018-09-18	09:30	10:30	meeting	hiring ring	0
+2018-09-18	10:30	12:20	sprint work	baggage fee modal, seat maps before checkout	0
+2018-09-18	12:20	13:05	break	lunch	0
+2018-09-18	13:05	18:30	sprint work	baggage fee modal	2
+2018-09-18	22:00	22:40	sprint work	baggage fee modal	1
+2018-09-19	09:45	10:00	meeting	prod support handoff	0
+2018-09-19	10:00	12:30	sprint work	prod support, app releases	0
+2018-09-19	12:30	13:20	break	lunch	0
+2018-09-19	13:20	17:30	sprint work	prod support triage, releases, seatmaps	1
+2018-09-20	09:30	10:45	sprint work	prod support triage, seatmaps	1
+2018-09-20	10:45	11:00	meeting	prod support stand up	0
+2018-09-20	11:00	12:00	sprint work	prod support triage	0
+2018-09-20	12:00	13:00	meeting	backlog grooming	0
+2018-09-20	13:00	13:40	break	lunch	0
+2018-09-20	13:40	18:00	sprint work	prod support triage, seatmaps	1
+2018-09-21	09:18	10:00	meeting	splunk review	0
+2018-09-20	10:00	10:00	meeting	stand up	0
+2018-09-21	10:15	10:45	sprint work	prod support triage	0
+2018-09-21	10:45	11:00	meeting	prod support stand up	0
+2018-09-21	11:00	13:00	sprint work	prod support triage	1
+2018-09-21	13:00	13:45	break	lunch	0
+2018-09-21	13:45	14:10	sprint work	triage	0
+2018-09-21	14:10	15:00	meeting	design system	0
+2018-09-21	15:00	18:15	sprint work	triage, PRs, seatmaps	1
+2018-09-24	09:30	10:00	sprint work	prod support triage	0
+2018-09-24	10:00	10:15	meeting	stand up	0
+2018-09-24	10:15	10:45	sprint work	triage	0
+2018-09-24	10:45	11:00	meeting	prod support stand up	0
+2018-09-24	11:00	01:00	sprint work	prod support triage, PRs, seatmap testing	0
+2018-09-24	13:00	14:00	meeting	backlog grooming	0
+2018-09-24	14:00	14:25	sprint work	seatmap testing	0
+2018-09-24	14:25	15:00	break	lunch	0
+2018-09-24	15:00	15:30	sprint work	seat map testing and fixes, PRs	0
+2018-09-24	15:30	16:30	meeting	seat map testing meeting	0
+2018-09-24	16:30	18:00	sprint work	seat maps testing and fixes	2
+2018-09-25	09:30	10:30	meeting	hiring ring meeting	0
+2018-09-25	10:30	10:45	other	phone screen prep	0
+2018-09-25	10:45	11:00	meeting	prod support stand up	0
+2018-09-25	11:00	12:45	sprint work	prod support releases, triage	0
+2018-09-25	12:45	13:00	other	interview prep	0
+2018-09-25	13:00	14:00	meeting	phone screen (Ben M.)	0
+2018-09-25	14:00	14:20	sprint work	prod support releases	0
+2018-09-25	14:20	15:00	break	lunch	0
+2018-09-25	15:00	16:00	meeting	demo	0
+2018-09-25	16:00	16:30	meeting	seat maps testing	0
+2018-09-25	16:30	18:00	sprint work	seat maps fixes	1
+2018-09-26	09:45	10:00	meeting	prod support handoff	0
+2018-09-26	10:00	12:15	sprint work	seat maps testing, fixes, baggage fee modal, PRS	0
+2018-09-26	12:15	12:45	meeting	impromptu currency meeting	0
+2018-09-26	12:45	13:30	break	lunch, TSC	1
+2018-09-26	13:30	14:00	meeting	TSC, time resolution	1
+2018-09-26	14:00	14:30	other	app fix, time resolution/review	1
+2018-09-26	14:30	14:45	other	filters review with ravali	0
+2018-09-26	14:45	15:00	other	grooming prep	0
+2018-09-26	15:00	17:00	meeting	sprint planning	0
+2018-09-26	17:00	18:30	sprint work	unit tests (Jest) for checkout server layer	0
+2018-09-27	10:00	10:15	meeting	stand up	0
+2018-09-27	10:15	10:45	other	commuting (literally driving from 30th & 8th to 32nd and Lex)	0
+2018-09-27	10:45	12:00	sprint work	QA'ing React CSH, verifying search and m-flights release (ACE login issues)	2
+2018-09-27	12:00	12:55	meeting	Air/Pkg Q4 Tech meeting	0
+2018-09-27	12:55	14:00	break	lunch	0
+2018-09-27	14:00	15:00	meeting	Flights Tech Sync Up	0
+2018-09-27	15:00	18:15	sprint work	Baggage Fee, Filters with Ravali	2
+2018-09-28	09:35	10:00	sprint work	baggage fee	0
+2018-09-28	10:00	10:05	meeting	stand up	0
+2018-09-28	10:05	12:35	sprint work	Baggage Fee Link, Verifying Release, QA issues, Filters with Ravali	2
+2018-09-28	12:35	13:20	break	lunch	0
+2018-09-28	13:20	14:00	sprint work	baggage fee link	0
+2018-09-28	14:00	15:00	meeting	Search App Tech Strategy	0
+2018-09-28	15:00	16:00	meeting	Code Review	0
+2018-09-28	16:00	18:00	sprint work	baggage fee link, technical issues	1

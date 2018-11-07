@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npx electron .",
     "dev": "NODE_ENV=development concurrently \"npx webpack -w\" \"npm start\" ",
-    "staging": "NODE_ENV=production npm start"
+    "staging": "NODE_ENV=production npm start",
+    "watch": "npx webpack -w"
   },
   "keywords": [],
   "author": "Brookes Stephens <brookes.stephens@priceline.com>",
@@ -21,11 +22,12 @@
     "feather-icons-react": "^0.2.0",
     "luxon": "1.4.2",
     "moment": "2.22.2",
-    "pcln-design-system": "^1.0.0",
+    "pcln-design-system": "^1.0.2",
     "prop-types": "^15.6.2",
     "rambda": "1.2.2",
     "react": "^16.7.0-alpha",
     "react-dom": "^16.7.0-alpha",
+    "react-router-dom": "^4.3.1",
     "styled-components": "^3.0.2",
     "victory": "30.4.1"
   },
