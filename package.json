@@ -20,6 +20,7 @@
     "electron-reload": "1.2.5",
     "electron-settings": "3.2.0",
     "feather-icons-react": "^0.2.0",
+    "history": "^4.7.2",
     "luxon": "1.4.2",
     "moment": "2.22.2",
     "pcln-design-system": "^1.0.2",

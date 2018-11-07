@@ -46,8 +46,9 @@ export default class AppContext extends React.Component {
     return <LogList logs={this.state.logs} editFn={this.openEdit} />
   }
 
-  openForm = e => {
-    return <LogForm event_type={e.target.name} handleSubmit={this.processLogs} />
+  openForm = props => {
+    console.log('props', props)
+    return <LogForm event_type={props.match.params.type} handleSubmit={this.processLogs} />
   }
 
   openEdit = props => {

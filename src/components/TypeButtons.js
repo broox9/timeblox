@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from 'pcln-design-system'
 import { Redirect } from 'react-router-dom'
+import history from '../history'
 
 import { Consumer } from '../AppContext'
 import { timeTypes } from '../helpers/time-functions'
@@ -13,9 +14,10 @@ const StyledButton = styled(Button)`
 `
 
 const redirectTo = e => {
-  console.log(e.currentTarget.name)
   const redirectName = `/form/${e.currentTarget.name.replace(/\s/g, '_')}`
-  return <Redirect to={redirectName} />
+  console.log(e.currentTarget.name, redirectName, history)
+  // return <Redirect to={redirectName} />
+  history.push(redirectName, {})
 }
 
 const TypeButtons = () => (

@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex, Heading, Container, Icon } from 'pcln-design-system'
-import { MemoryRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import history from './history'
 
 import AppContext, { Consumer } from './AppContext'
 import Toolbar from './components/Toolbar'
@@ -21,7 +22,7 @@ export default class App extends React.Component {
   render() {
     return (
       <AppContext>
-        <MemoryRouter>
+        <Router history={history}>
           <FlexWrap flexDirection='row' justify="flex-start" align="stretch">
             <Toolbar />
             <Container p={3} width={1} mx={2} style={{ overflowY: 'auto' }}>
@@ -45,7 +46,7 @@ export default class App extends React.Component {
               </Consumer>
             </Container>
          </FlexWrap>
-        </MemoryRouter>
+        </Router>
       </AppContext>
     )
   }
