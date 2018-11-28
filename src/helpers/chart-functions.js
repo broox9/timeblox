@@ -53,7 +53,7 @@ export function pieChartByType(logs) {
     rollup.y = list[key].reduce((acc, item) => {
       const duration = durationMinutes(item.event_time_end, item.event_time_start)
       acc += duration
-      total += acc
+      total += duration
       return acc
     }, 0)
     arr.push(rollup)

@@ -1,17 +1,25 @@
 import React from 'react'
 import { VictoryChart, VictoryBar, VictoryPie } from 'victory'
 import { Box, Flex } from 'pcln-design-system'
+import { compareAsc } from 'date-fns';
 import styled from 'styled-components'
 import PageTitle from '../atoms/PageTitle'
 import { colorScale } from '../helpers/chart-functions'
-import { compareAsc } from 'date-fns';
+
+import Widget from './Charts/Widget'
 
 const labelStyle = { fontSize: 12, fill: 'white'}
+
+const GridParent = styled(Box)`
+  display: grid;
+  grid-template-columns: 45%  45%;
+  grid-template-rows: 45% 45%;
+`
 
 /** @TODO: Do this Async with WebWorkers and/or Promises */
 export default class extends React.Component {
   pieChartLabel = ({x, y, total}) => {
-    console.log(x, (y/total) * 100)
+    console.log(x, y, total, (y/total) * 100)
     return `
     ${x}
     ${Math.round((y/total) * 100)}% (${y})
@@ -21,9 +29,8 @@ export default class extends React.Component {
     return (
       <Box>
         <PageTitle>Time Data</PageTitle>
-        <Flex>
-          <Box>
-            <h3>Data for the Day</h3>
+        <GridParent>
+          <Widget title="Data for the Day">
             <VictoryPie
               data={this.props.pieDataToday}
               colorScale={colorScale}
@@ -33,9 +40,8 @@ export default class extends React.Component {
               style={{ labels: labelStyle }}
               labels={this.pieChartLabel}
             />
-          </Box>
-          <Box>
-            <h3>Data for the Week</h3>
+          </Widget>
+          <Widget title="Data for the Week">
             <VictoryPie
               data={this.props.pieDataWeek}
               colorScale={colorScale}
@@ -45,11 +51,8 @@ export default class extends React.Component {
               style={{ labels: labelStyle }}
               labels={this.pieChartLabel}
             />
-          </Box>           
-        </Flex>
-        <Flex>
-          <Box width={1/2}>
-            <h3>Data for the Month</h3>
+          </Widget>           
+          <Widget title="Data for the Month">
             <VictoryPie
               data={this.props.pieData}
               colorScale={colorScale}
@@ -59,17 +62,16 @@ export default class extends React.Component {
               style={{ labels: labelStyle }}
               labels={this.pieChartLabel}
             />
-          </Box>
-          <Box>
-            <h3>Minutes by Time Type</h3>
+          </Widget>
+          <Widget title="Minutes by Time Type">
             <VictoryChart domainPadding={8}>
               <VictoryBar 
                 style={{ data: {fill: 'green'}, labels: labelStyle }}
                 data={this.props.barDataMonth}
               />
             </VictoryChart>
-          </Box>
-        </Flex>
+          </Widget>
+        </GridParent>
       </Box>
 
     )

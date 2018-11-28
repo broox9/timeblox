@@ -46,7 +46,7 @@ export default class LogList extends React.Component {
   makeRows = () => {
     return this.props.logs.length && this.props.logs.map((log, i) => {
       const { event_date, event_time_start, event_time_end, event_type, event_details, event_distraction } = log
-      return <tr key={i} data-id={i} cellpadding={4}>
+      return <tr key={i} data-id={i} cellPadding={4}>
         <td>{event_date}</td>
         <td>{event_time_start}</td>
         <td>{event_time_end}</td>
