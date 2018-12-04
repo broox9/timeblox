@@ -1,15 +1,16 @@
 import React from 'React'
 import PropTypes from 'prop-types'
-import { Box, Input, FormField, Label, InputGroup, Button, Icon, Heading } from 'pcln-design-system'
+import { Box, Input, FormField, Label, InputGroup, Button, Icon } from 'pcln-design-system'
 // import Icon from 'feather-icons-react'
 import settings from 'electron-settings'
 import styled from 'styled-components'
 import { remote } from 'electron'
 
+import { setCurrentFile, getCurrentFile } from '../helpers/csv-functions';
 import PageTitle from '../atoms/PageTitle'
 
 export default class Settings extends React.Component {
-  openDialog = e => {
+  openFolderDialog = e => {
     e.preventDefault()
     console.log(remote.dialog)
     remote.dialog.showOpenDialog({
@@ -20,17 +21,36 @@ export default class Settings extends React.Component {
     }, this.setFilePath)
   }
 
+  openFileDialog = e => {
+    e.preventDefault()
+    remote.dialog.showOpenDialog({
+      defaultPath: `${process.env.HOME}/Desktop`,
+      buttonLabel: 'Select A File',
+      properties: ['openFile'],
+      message: 'Set file to use'
+    }, this.setCurrentFile)    
+  }
+
   state = {
-    defaultFolder: settings.get('defaultFolder')
+    defaultFolder: settings.get('defaultFolder'),
+    currentFile: getCurrentFile()
   }
 
   setFilePath = fp => {
     settings.set('defaultFolder', fp)
     this.setState({defaultFolder: fp})
   }
+
+  setCurrentFile = file => {
+    this.setState({currentFile: file}, () => {
+      setCurrentFile(file, true);
+      this.props.handleSubmit()
+    });
+    
+  }
   render() {
     return (
-      <Box width={1} >
+      <Box style={{maxWidth: 768}} mx="auto">
         <PageTitle>Settings</PageTitle>
         <form>
           <InputGroup>
@@ -51,7 +71,15 @@ export default class Settings extends React.Component {
               <Icon name="laptop" />
               <Input readonly type="text" id="folder" value={this.state.defaultFolder} placeholder="set default folder"/>
             </FormField>
-            <Button size="small" onClick={this.openDialog}>change</Button>
+            <Button size="small" onClick={this.openFolderDialog}>change</Button>
+          </InputGroup>
+          <InputGroup>
+            <FormField>
+              <Label htmlFor="folder">current file</Label>
+              <Icon name="laptop" />
+              <Input readonly type="text" id="folder" value={this.state.currentFile} placeholder="set current file" />
+            </FormField>
+            <Button size="small" onClick={this.openFileDialog}>select</Button>
           </InputGroup>
         </form>
       </Box>

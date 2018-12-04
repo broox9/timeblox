@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Heading, Container, Icon } from 'pcln-design-system'
+import { Box, Flex } from 'pcln-design-system'
 
 import AppContext, { Consumer } from './AppContext'
+import Header from './components/Header'
 import Toolbar from './components/Toolbar'
 import DragRegion from './atoms/DragRegion'
 
@@ -23,17 +24,14 @@ export default class App extends React.Component {
       <AppContext>
         <FlexWrap flexDirection='row' justify="flex-start" align="stretch">
           <Toolbar />
-          <Container p={3} width={1} mx={2} style={{ overflowY: 'auto' }}>
+          <Box p={3} width={1} mx={3} style={{overflowY: 'auto'}}>
             <DragRegion>
-              <Flex justify="center" my={2} align="center">
-                <Icon name="timer" size={30} color="orange" />
-                <Heading.h2 ml={2}>TimeBlox</Heading.h2>
-              </Flex>
+                <Header />
             </DragRegion>
             <Consumer>
               {context => context.state.currentPage}
             </Consumer>
-          </Container>
+          </Box>
         </FlexWrap>
       </AppContext>
     )

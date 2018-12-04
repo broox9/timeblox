@@ -87457,6 +87457,10 @@ var _AppContext = __webpack_require__(/*! ./AppContext */ "./src/AppContext.js")
 
 var _AppContext2 = _interopRequireDefault(_AppContext);
 
+var _Header = __webpack_require__(/*! ./components/Header */ "./src/components/Header.js");
+
+var _Header2 = _interopRequireDefault(_Header);
+
 var _Toolbar = __webpack_require__(/*! ./components/Toolbar */ "./src/components/Toolbar.js");
 
 var _Toolbar2 = _interopRequireDefault(_Toolbar);
@@ -87497,21 +87501,12 @@ var App = function (_React$Component) {
           { flexDirection: 'row', justify: 'flex-start', align: 'stretch' },
           _react2.default.createElement(_Toolbar2.default, null),
           _react2.default.createElement(
-            _pclnDesignSystem.Container,
-            { p: 3, width: 1, mx: 2, style: { overflowY: 'auto' } },
+            _pclnDesignSystem.Box,
+            { p: 3, width: 1, mx: 3, style: { overflowY: 'auto' } },
             _react2.default.createElement(
               _DragRegion2.default,
               null,
-              _react2.default.createElement(
-                _pclnDesignSystem.Flex,
-                { justify: 'center', my: 2, align: 'center' },
-                _react2.default.createElement(_pclnDesignSystem.Icon, { name: 'timer', size: 30, color: 'orange' }),
-                _react2.default.createElement(
-                  _pclnDesignSystem.Heading.h2,
-                  { ml: 2 },
-                  'TimeBlox'
-                )
-              )
+              _react2.default.createElement(_Header2.default, null)
             ),
             _react2.default.createElement(
               _AppContext.Consumer,
@@ -87618,7 +87613,7 @@ var AppContext = function (_React$Component) {
 
       _this.setState({ testMode: testMode, currentPage: currentPage, logs: logs });
     }, _this.openSettings = function (e) {
-      var currentPage = _react2.default.createElement(_Settings2.default, null);
+      var currentPage = _react2.default.createElement(_Settings2.default, { handleSubmit: _csvFunctions.getData });
       _this.setState({ currentPage: currentPage });
     }, _this.openLogs = function (e) {
       var currentPage = _react2.default.createElement(_LogList2.default, { logs: _this.state.logs, editFn: _this.openEdit });
@@ -87655,7 +87650,6 @@ var AppContext = function (_React$Component) {
         logs[parseInt(event_index)] = data;
         (0, _csvFunctions.saveAll)(logs);
       }
-      console.log('save', data);
       _this.setState({ logs: logs }, function () {
         return _this.openLogs();
       });
@@ -87796,7 +87790,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  background-color: #001833;\n  margin: 0;\n  border: 1px solid #ccc;\n\n  h3 {\n    text-align: center;\n  }\n'], ['\n  background-color: #001833;\n  margin: 0;\n  border: 1px solid #ccc;\n\n  h3 {\n    text-align: center;\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  background-color: rgba(0,0,0, 0.05);\n  margin: 8px;\n  border: 1px solid #212121;\n  /* border: 1px solid #ccc; */\n\n  h3, h5 {\n    text-align: center;\n    margin: 4px auto;\n  }\n'], ['\n  background-color: rgba(0,0,0, 0.05);\n  margin: 8px;\n  border: 1px solid #212121;\n  /* border: 1px solid #ccc; */\n\n  h3, h5 {\n    text-align: center;\n    margin: 4px auto;\n  }\n']);
 
 exports.default = Widget;
 
@@ -87825,7 +87819,61 @@ function Widget(props) {
       { className: 'widget-title' },
       props.title
     ),
+    _react2.default.createElement(
+      'h5',
+      null,
+      props.totalsTitle
+    ),
     props.children
+  );
+}
+
+/***/ }),
+
+/***/ "./src/components/Header.js":
+/*!**********************************!*\
+  !*** ./src/components/Header.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n  position: sticky;\n'], ['\n  position: sticky;\n']);
+
+exports.default = Header;
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _styledComponents = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.esm.js");
+
+var _styledComponents2 = _interopRequireDefault(_styledComponents);
+
+var _pclnDesignSystem = __webpack_require__(/*! pcln-design-system */ "./node_modules/pcln-design-system/dist/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var StickyFlex = (0, _styledComponents2.default)(_pclnDesignSystem.Flex)(_templateObject);
+
+function Header() {
+  return _react2.default.createElement(
+    StickyFlex,
+    { justify: 'center', my: 2, align: 'center', style: { position: 'sticky' } },
+    _react2.default.createElement(_pclnDesignSystem.Icon, { name: 'timer', size: 30, color: 'orange' }),
+    _react2.default.createElement(
+      _pclnDesignSystem.Heading.h2,
+      { ml: 2 },
+      'TimeBlox'
+    )
   );
 }
 
@@ -88294,6 +88342,8 @@ var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
 var _electron = __webpack_require__(/*! electron */ "electron");
 
+var _csvFunctions = __webpack_require__(/*! ../helpers/csv-functions */ "./src/helpers/csv-functions.js");
+
 var _PageTitle = __webpack_require__(/*! ../atoms/PageTitle */ "./src/atoms/PageTitle.js");
 
 var _PageTitle2 = _interopRequireDefault(_PageTitle);
@@ -88322,7 +88372,7 @@ var Settings = function (_React$Component) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Settings.__proto__ || Object.getPrototypeOf(Settings)).call.apply(_ref, [this].concat(args))), _this), _this.openDialog = function (e) {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Settings.__proto__ || Object.getPrototypeOf(Settings)).call.apply(_ref, [this].concat(args))), _this), _this.openFolderDialog = function (e) {
       e.preventDefault();
       console.log(_electron.remote.dialog);
       _electron.remote.dialog.showOpenDialog({
@@ -88331,11 +88381,25 @@ var Settings = function (_React$Component) {
         properties: ['openDirectory', 'createDirectory'],
         message: 'Set The folder to save Your files'
       }, _this.setFilePath);
+    }, _this.openFileDialog = function (e) {
+      e.preventDefault();
+      _electron.remote.dialog.showOpenDialog({
+        defaultPath: process.env.HOME + '/Desktop',
+        buttonLabel: 'Select A File',
+        properties: ['openFile'],
+        message: 'Set file to use'
+      }, _this.setCurrentFile);
     }, _this.state = {
-      defaultFolder: _electronSettings2.default.get('defaultFolder')
+      defaultFolder: _electronSettings2.default.get('defaultFolder'),
+      currentFile: (0, _csvFunctions.getCurrentFile)()
     }, _this.setFilePath = function (fp) {
       _electronSettings2.default.set('defaultFolder', fp);
       _this.setState({ defaultFolder: fp });
+    }, _this.setCurrentFile = function (file) {
+      _this.setState({ currentFile: file }, function () {
+        (0, _csvFunctions.setCurrentFile)(file, true);
+        _this.props.handleSubmit();
+      });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -88344,7 +88408,7 @@ var Settings = function (_React$Component) {
     value: function render() {
       return _React2.default.createElement(
         _pclnDesignSystem.Box,
-        { width: 1 },
+        { style: { maxWidth: 768 }, mx: 'auto' },
         _React2.default.createElement(
           _PageTitle2.default,
           null,
@@ -88395,8 +88459,28 @@ var Settings = function (_React$Component) {
             ),
             _React2.default.createElement(
               _pclnDesignSystem.Button,
-              { size: 'small', onClick: this.openDialog },
+              { size: 'small', onClick: this.openFolderDialog },
               'change'
+            )
+          ),
+          _React2.default.createElement(
+            _pclnDesignSystem.InputGroup,
+            null,
+            _React2.default.createElement(
+              _pclnDesignSystem.FormField,
+              null,
+              _React2.default.createElement(
+                _pclnDesignSystem.Label,
+                { htmlFor: 'folder' },
+                'current file'
+              ),
+              _React2.default.createElement(_pclnDesignSystem.Icon, { name: 'laptop' }),
+              _React2.default.createElement(_pclnDesignSystem.Input, { readonly: true, type: 'text', id: 'folder', value: this.state.currentFile, placeholder: 'set current file' })
+            ),
+            _React2.default.createElement(
+              _pclnDesignSystem.Button,
+              { size: 'small', onClick: this.openFileDialog },
+              'select'
             )
           )
         )
@@ -88594,7 +88678,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  display: grid;\n  grid-template-columns: 45%  45%;\n  grid-template-rows: 45% 45%;\n'], ['\n  display: grid;\n  grid-template-columns: 45%  45%;\n  grid-template-rows: 45% 45%;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  width: 100%;\n  display: grid;\n  grid-template-columns: 48% 48%;\n  grid-template-rows: 48% 48%;\n'], ['\n  width: 100%;\n  display: grid;\n  grid-template-columns: 48% 48%;\n  grid-template-rows: 48% 48%;\n']);
 
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
@@ -88634,6 +88718,14 @@ var labelStyle = { fontSize: 12, fill: 'white' };
 
 var GridParent = (0, _styledComponents2.default)(_pclnDesignSystem.Box)(_templateObject);
 
+var hoursAndMinutes = function hoursAndMinutes(minutes) {
+  return parseInt(minutes / 60) + 'h ' + minutes % 60 + 'm';
+};
+var daysHoursMinutes = function daysHoursMinutes(minutes) {
+  var day = 60 * 8;
+  return parseInt(minutes / day) + ' work days ' + hoursAndMinutes(minutes % day);
+};
+
 /** @TODO: Do this Async with WebWorkers and/or Promises */
 
 var _class = function (_React$Component) {
@@ -88654,9 +88746,7 @@ var _class = function (_React$Component) {
       var x = _ref2.x,
           y = _ref2.y,
           total = _ref2.total;
-
-      console.log(x, y, total, y / total * 100);
-      return '\n    ' + x + '\n    ' + Math.round(y / total * 100) + '% (' + y + ')\n  ';
+      return '\n    ' + x + '\n    ' + Math.round(y / total * 100) + '% (' + hoursAndMinutes(y) + ')\n  ';
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -88664,6 +88754,16 @@ var _class = function (_React$Component) {
     key: 'render',
     value: function render() {
       console.log('Visual', this.props);
+      var _props = this.props,
+          pieDataToday = _props.pieDataToday,
+          pieDataWeek = _props.pieDataWeek,
+          pieData = _props.pieData,
+          barDataMonth = _props.barDataMonth;
+
+      var dayHoursMinutes = hoursAndMinutes(pieDataToday[0].total);
+      var weekHoursMinutes = hoursAndMinutes(pieDataWeek[0].total);
+      var monthHoursMinutes = daysHoursMinutes(pieData[0].total);
+
       return _react2.default.createElement(
         _pclnDesignSystem.Box,
         null,
@@ -88677,7 +88777,7 @@ var _class = function (_React$Component) {
           null,
           _react2.default.createElement(
             _Widget2.default,
-            { title: 'Data for the Day' },
+            { title: 'Data for the Day', totalsTitle: dayHoursMinutes },
             _react2.default.createElement(_victory.VictoryPie, {
               data: this.props.pieDataToday,
               colorScale: _chartFunctions.colorScale,
@@ -88690,7 +88790,7 @@ var _class = function (_React$Component) {
           ),
           _react2.default.createElement(
             _Widget2.default,
-            { title: 'Data for the Week' },
+            { title: 'Data for the Week', totalsTitle: weekHoursMinutes },
             _react2.default.createElement(_victory.VictoryPie, {
               data: this.props.pieDataWeek,
               colorScale: _chartFunctions.colorScale,
@@ -88703,7 +88803,7 @@ var _class = function (_React$Component) {
           ),
           _react2.default.createElement(
             _Widget2.default,
-            { title: 'Data for the Month' },
+            { title: 'Data for the Month', totalsTitle: monthHoursMinutes },
             _react2.default.createElement(_victory.VictoryPie, {
               data: this.props.pieData,
               colorScale: _chartFunctions.colorScale,
@@ -88887,6 +88987,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
+exports.getCurrentFile = getCurrentFile;
 exports.setTestMode = setTestMode;
 exports.getData = getData;
 exports.saveLog = saveLog;
@@ -88918,6 +89019,10 @@ var _currentFile = 'TimeBlox - ' + month + ' ' + year + '.tsv';
 var _filePath = defaultFolder || process.env['HOME'] + '/Desktop/timeblox/';
 
 setCurrentFile();
+
+function getCurrentFile() {
+  return _currentFile;
+}
 
 function setTestMode() {
   var isTesting = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
@@ -88962,7 +89067,9 @@ function saveAll(data) {
 }
 
 function setCurrentFile(overrideFile) {
-  var file = '' + _filePath + (overrideFile ? overrideFile : _defaultFile);
+  var fullPath = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+  var file = '' + (fullPath ? '' : _filePath) + (overrideFile ? overrideFile : _defaultFile);
   var hasFile = _fs2.default.existsSync(file);
   if (!hasFile) {
     _fs2.default.appendFileSync(file, HEADERS, 'utf8');
@@ -89020,6 +89127,8 @@ var months = exports.months = ['January', 'February', 'March', 'April', 'May', '
 "use strict";
 
 
+var _templateObject = _taggedTemplateLiteral(['\n  body::-webkit-scrollbar {\n      width: 1em;\n  }\n  \n  body::-webkit-scrollbar-track {\n    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\n  }\n  \n  body::-webkit-scrollbar-thumb {\n    background-color: darkgrey;\n    outline: 1px solid slategrey;\n  }\n'], ['\n  body::-webkit-scrollbar {\n      width: 1em;\n  }\n  \n  body::-webkit-scrollbar-track {\n    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);\n  }\n  \n  body::-webkit-scrollbar-thumb {\n    background-color: darkgrey;\n    outline: 1px solid slategrey;\n  }\n']);
+
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -89028,6 +89137,8 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/i
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _styledComponents = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.esm.js");
+
 var _pclnDesignSystem = __webpack_require__(/*! pcln-design-system */ "./node_modules/pcln-design-system/dist/index.js");
 
 var _App = __webpack_require__(/*! ./App */ "./src/App.js");
@@ -89035,6 +89146,10 @@ var _App = __webpack_require__(/*! ./App */ "./src/App.js");
 var _App2 = _interopRequireDefault(_App);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+(0, _styledComponents.injectGlobal)(_templateObject);
 
 _reactDom2.default.render(_react2.default.createElement(
   _pclnDesignSystem.ThemeProvider,

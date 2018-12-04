@@ -38,7 +38,7 @@ export default class AppContext extends React.Component {
   }
 
   openSettings = e => {
-    const currentPage = <Settings />
+    const currentPage = <Settings  handleSubmit={getData}/>
     this.setState({ currentPage })
   }
 
@@ -86,7 +86,6 @@ export default class AppContext extends React.Component {
       logs[parseInt(event_index)] = data
       saveAll(logs)
     }
-    console.log('save', data)
     this.setState({ logs }, () => this.openLogs())
   }
 

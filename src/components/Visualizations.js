@@ -8,29 +8,40 @@ import { colorScale } from '../helpers/chart-functions'
 
 import Widget from './Charts/Widget'
 
-const labelStyle = { fontSize: 12, fill: 'white'}
+const labelStyle = { fontSize: 12, fill: 'white' }
 
 const GridParent = styled(Box)`
+  width: 100%;
   display: grid;
-  grid-template-columns: 45%  45%;
-  grid-template-rows: 45% 45%;
+  grid-template-columns: 48% 48%;
+  grid-template-rows: 48% 48%;
 `
+
+const hoursAndMinutes = (minutes) => `${parseInt(minutes/60)}h ${minutes % 60}m`
+const daysHoursMinutes = (minutes) => {
+  const day = 60 * 8
+  return `${parseInt(minutes / day)} work days ${hoursAndMinutes(minutes % day)}`
+}
 
 /** @TODO: Do this Async with WebWorkers and/or Promises */
 export default class extends React.Component {
-  pieChartLabel = ({x, y, total}) => {
-    console.log(x, y, total, (y/total) * 100)
-    return `
+  pieChartLabel = ({x, y, total}) => `
     ${x}
-    ${Math.round((y/total) * 100)}% (${y})
-  `}
+    ${Math.round((y/total) * 100)}% (${hoursAndMinutes(y)})
+  `
+  
   render() {
     console.log('Visual', this.props)
+    const {pieDataToday, pieDataWeek, pieData, barDataMonth} = this.props;
+    const dayHoursMinutes = hoursAndMinutes(pieDataToday[0].total)
+    const weekHoursMinutes = hoursAndMinutes(pieDataWeek[0].total)
+    const monthHoursMinutes = daysHoursMinutes(pieData[0].total)
+
     return (
       <Box>
         <PageTitle>Time Data</PageTitle>
         <GridParent>
-          <Widget title="Data for the Day">
+          <Widget title="Data for the Day" totalsTitle={dayHoursMinutes}>
             <VictoryPie
               data={this.props.pieDataToday}
               colorScale={colorScale}
@@ -41,7 +52,7 @@ export default class extends React.Component {
               labels={this.pieChartLabel}
             />
           </Widget>
-          <Widget title="Data for the Week">
+          <Widget title="Data for the Week" totalsTitle={weekHoursMinutes}>
             <VictoryPie
               data={this.props.pieDataWeek}
               colorScale={colorScale}
@@ -52,7 +63,7 @@ export default class extends React.Component {
               labels={this.pieChartLabel}
             />
           </Widget>           
-          <Widget title="Data for the Month">
+          <Widget title="Data for the Month" totalsTitle={monthHoursMinutes}>
             <VictoryPie
               data={this.props.pieData}
               colorScale={colorScale}

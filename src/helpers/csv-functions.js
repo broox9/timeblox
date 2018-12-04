@@ -16,6 +16,10 @@ let _filePath = defaultFolder || `${process.env['HOME']}/Desktop/timeblox/`
 
 setCurrentFile()
 
+export function getCurrentFile() {
+  return _currentFile
+}
+
 export function setTestMode(isTesting = false) {
   const file = isTesting ? 'testfile.tsv' : _defaultFile;
   setCurrentFile(file)
@@ -46,8 +50,8 @@ export function saveAll(data) {
   console.log('SAVE ALL', data)
 }
 
-export function setCurrentFile(overrideFile) {
-  const file = `${_filePath}${overrideFile ? overrideFile : _defaultFile}`
+export function setCurrentFile(overrideFile, fullPath = false) {
+  const file = `${fullPath ? '' : _filePath}${overrideFile ? overrideFile : _defaultFile}`
   const hasFile = fs.existsSync(file)
   if (!hasFile) {
     fs.appendFileSync(file, HEADERS, 'utf8')
